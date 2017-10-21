@@ -32,3 +32,6 @@ Object data 定义返回逻辑处理后所得到的数据。
 
 **log4j日志**
 WebLogAspect工具类采用AOP编程对web层的访问进行日志记录。
+
+**NOSQL数据库Redis**
+Redis是一个可基于内存亦可持久化的日志型、Key-Value数据库。

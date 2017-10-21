@@ -1,6 +1,6 @@
 package com.example.service;
 
-import com.example.domain.User;
+import com.example.entity.User;
 import org.apache.ibatis.annotations.*;
 import org.springframework.data.repository.query.Param;
 

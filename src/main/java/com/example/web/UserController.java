@@ -1,16 +1,18 @@
 package com.example.web;
 
-import com.example.domain.User;
+import com.example.entity.User;
 import com.example.service.UserMapper;
 import com.example.utils.MessageVo;
+import com.example.utils.TypeConversionUtil;
+import com.example.utils.WebLogAspect;
 import io.swagger.annotations.ApiImplicitParam;
 import io.swagger.annotations.ApiImplicitParams;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
+import java.util.logging.Logger;
 
 /**
  * Created by IntelliJ IDEA.
@@ -29,6 +31,8 @@ public class UserController {
     */
     //static Map<Long, User> users = Collections.synchronizedMap(new HashMap<Long, User>());
 
+    private Logger logger = Logger.getLogger(UserController.class.getName());
+
     @Resource
     private UserMapper userMapper;
 
@@ -38,6 +42,8 @@ public class UserController {
     public MessageVo postUser(@RequestBody User user) {
 
         MessageVo mesVo = new MessageVo();
+        User myUser = new User();
+        TypeConversionUtil.VoConvertToEntity(user,myUser);
         userMapper.create(user);
         mesVo.setCode("1");
         mesVo.setData(user);
